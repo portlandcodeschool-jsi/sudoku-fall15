@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "async": "node extras/async-demo.js"
   },
-  "author": "Dan Bauer",
+  "author": "Jennifer Minetree",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
   "dependencies": {
     "lodash": "^3.10.1",
