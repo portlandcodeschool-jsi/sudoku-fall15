@@ -12,20 +12,6 @@ console.log('-----------');
 
 
 
-// Async, Wrong way:
-var asyncData = '';
-timer.start();
-console.log('readFile async:')
-fs.readFile('sudoku-data', {encoding: 'utf8'}, function (err, data) {
-	asyncData = data;
-	timer.check('async loading done');
-	console.log('-----------');
-});
-console.log('Data:',asyncData);
-timer.check('Code moving ahead...');
-
-
-
 // Async, Right way:
 var asyncData = '';
 fs.readFile('sudoku-data', {encoding: 'utf8'}, function (err, data) {
