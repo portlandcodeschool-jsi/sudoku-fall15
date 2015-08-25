@@ -3,21 +3,21 @@ Grid constructor
 ----------------
   new Grid(initString) ==> grid instance
 
+
+
 DigitSet constructor
 ----------------
   new DigitSet(digit) ==> DigitSet instance where digit used to define the possibleValues
+
 
 
 DigitSet objects
 ----------------
 
 Properties:
-  // id = (number between 0 and 80)
-  // definiteValue = number
   possibleValues: [digits 1-9]
 
 Methods:
-  // adjustDefiniteValue()
   removePossibleValue(digit) ==> undefined
   size() ==> integer 1-9
   possibleValueArray() ==> array stored in possibleValues property
@@ -31,15 +31,14 @@ Properties:
   digitSets: [DigitSet instances]
 
 Methods:
-  // updatePossibleValues(id)
-  returnRowArray(id)
-  returnColumnArray(id)
-  returnBlockArray(id)
-  returnPossibleValues(id)
-  returnDefiniteValue(id)
-  updateDefiniteValue(id)
-  importInitialValues
-  exportString
+  getRow(cellToken) ==> rowToken (aka groupToken)
+  getColumn(cellToken) ==> columnToken (aka groupToken)
+  getBlock(cellToken) ==> blockToken (aka groupToken)
+  groups(cellToken) ==> array of rowToken, columnToken, and blockToken associated with cellToken
+  getPossibleValues(cellToken) ==> array stored in possibleValues property for the given cellToken
+  updatePossibleValues(cellToken, digit) ==> undefined; removes given digit from the possibleValues property for the given cellToken
+  cells(groupToken) ==> array of cell tokens associated with groupToken
+  exportString ==> string of 81 characters
 
 
 
@@ -49,4 +48,4 @@ Viewer objects
 Properties:
 
 Methods:
-  displayBoard
+  displayBoard ==>
