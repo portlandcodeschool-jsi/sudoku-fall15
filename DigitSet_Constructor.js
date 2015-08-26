@@ -1,6 +1,8 @@
 var TestStrGenerator = require('./data_into_testString.js');
 var GridFactory = require('./grid_constructor.js');
-var str = TestStrGenerator;
+var currentStr = require('./main.js');
+
+var str = currentStr;
 
 var ObjectFactory = function(id) {
 		var potential = [];
@@ -88,8 +90,8 @@ var ObjectFactory = function(id) {
 
 	};
 
-	var cell = new ObjectFactory(12);
-	console.log(cell);
+	// var cell = new ObjectFactory(12);
+	// console.log(cell);
 
   // console.log(square.getColumn());
   // console.log(square.getRow());

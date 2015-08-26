@@ -1036,5 +1036,8 @@ function randomNumber() {
 }
 
 var testStr = cleanAssArray[randomNumber()];
+var emptyArray = [];
+emptyArray.push(testStr);
+console.log(emptyArray);
 
-module.exports = testStr;
+module.exports = emptyArray;
