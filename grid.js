@@ -18,16 +18,16 @@ function Grid(initstr) {
      } else {
        this.cells.push(new DigitSet());
      }
-	 }, this)
+ 	}, this);
 	}
-};
+}
 
-Grid.prototype.cells = function () {
+Grid.prototype.getCells = function () {
   return this.cells.slice();
 };
 
 Grid.prototype.getRow = function (cellToken) {
-  return [Math.floor(cellToken / 9)];
+  return Math.floor(cellToken / 9);
 };
 
 Grid.prototype.getCol = function (cellToken) {
@@ -37,7 +37,7 @@ Grid.prototype.getCol = function (cellToken) {
 
 
 Grid.prototype.getDigitSetsForRow = function (cellToken) {
-  var row = this.getRow(cellToken)
+  var row = this.getRow(cellToken);
   var cellIds = [];
   var digitSets = [];
 
@@ -51,7 +51,7 @@ Grid.prototype.getDigitSetsForRow = function (cellToken) {
 };
 
 Grid.prototype.getDigitSetsForCol = function (cellToken) {
-  var col = this.getCol(cellToken)
+  var col = this.getCol(cellToken);
   var cellIds = [];
   var digitSets = [];
 
@@ -91,4 +91,5 @@ var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6....
 // console.log(myGrid.getRow(9));
 // console.log(myGrid.getRow(18));
 myGrid.getDigitSetsForBlock(23);
+// console.log(myGrid.getCells());
 module.exports = Grid;
