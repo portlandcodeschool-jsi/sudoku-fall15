@@ -28,10 +28,10 @@ DigitSet.prototype.add = function (digits) {
         return false;
       }
       if (parseInt(e) < 1 || parseInt(e) > 9) {
-        return false
+        return false;
       }
       return true;
-    })
+    });
     this.possibles =	_.union(digits, this.possibles);
   } else {
     this.possibles =	_.union([digits], this.possibles);
@@ -51,7 +51,7 @@ DigitSet.prototype.toString = function () {
 };
 
 DigitSet.prototype.toArray = function () {
-	return this.possibles.slice();
+	return this.possibles.sort().slice();
 };
 
 DigitSet.prototype.isUncertain = function () {
