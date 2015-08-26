@@ -1,10 +1,14 @@
 var DigitSet = require('./digitset');
 
+var GridFactory = (function() {
+	function Grid(initstr) {
+		
+	}
+	return Grid;
+})();
 
-function Grid(initstr) {
-	// your code here
-}
 
 console.log(Grid);// for testing only
+var Grid = new GridFactory();
 
 module.exports = Grid;

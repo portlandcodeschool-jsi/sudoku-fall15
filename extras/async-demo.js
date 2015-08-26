@@ -4,25 +4,25 @@
 var fs = require('fs'); //load node module
 var timer = require('./timer'); //load custom module
 
-timer.start()
-console.log('readFileSynch:')
+timer.start();
+console.log('readFileSynch:');
 var syncData = fs.readFileSync('sudoku-data', {encoding: 'utf8'});
 timer.check('sync loading done');
 console.log('-----------');
 
 
 
-// Async, Wrong way:
-var asyncData = '';
-timer.start();
-console.log('readFile async:')
-fs.readFile('sudoku-data', {encoding: 'utf8'}, function (err, data) {
-	asyncData = data;
-	timer.check('async loading done');
-	console.log('-----------');
-});
-console.log('Data:',asyncData);
-timer.check('Code moving ahead...');
+// // Async, Wrong way:
+// var asyncData = '';
+// timer.start();
+// console.log('readFile async:')
+// fs.readFile('sudoku-data', {encoding: 'utf8'}, function (err, data) {
+// 	asyncData = data;
+// 	timer.check('async loading done');
+// 	console.log('-----------');
+// });
+// console.log('Data:',asyncData);
+// timer.check('Code moving ahead...');
 
 
 
