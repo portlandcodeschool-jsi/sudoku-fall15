@@ -25,9 +25,6 @@ describe('digitsets testing', function() {
   });
 
 
-
-
-
 //Size
   describe('Test the .size() method of a digitset instance', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
@@ -69,4 +66,44 @@ describe('digitsets testing', function() {
       expect(game.digitsets[0].possibilitiesAsArray()).to.be.a("array");
     });
   });
+});
+
+
+
+
+
+
+
+
+
+
+//Grid Tests
+describe('Test getRow Method', function() {
+  var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+  var game = new Grid(testStr);
+
+  it('', function() {
+    expect(game.getRow(15)).to.equal(1);
+  });
+
+  it('', function() {
+    expect(game.getRow(36)).to.equal(4);
+  });
+
+  it('', function() {
+    expect(game.getRow(77)).to.equal(8);
+  });
+
+  it('', function() {
+    expect(game.getColumn(15)).to.equal(6);
+  });
+
+  it('', function() {
+    expect(game.getColumn(49)).to.equal(4);
+  });
+
+  it('', function() {
+    expect(game.getColumn(68)).to.equal(5);
+  });
+
 });

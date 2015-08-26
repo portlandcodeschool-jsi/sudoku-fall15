@@ -10,6 +10,15 @@ function Grid(initstr) {
   	self.digitsets.push(x);
 	}
 	strArray.forEach(initDigitSets);
+
+	this.getRow = function(cellToken) {
+		return Math.floor(cellToken/9);
+	};
+
+	this.getColumn = function(cellToken) {
+		return cellToken%9;
+	};
+
 }
 
 console.log(Grid);// for testing only
