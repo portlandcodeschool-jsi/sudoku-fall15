@@ -22,6 +22,12 @@ DigitSet.prototype.set = function (arrayOfDigits) {
 
 DigitSet.prototype.add = function (digits) {
 	if (digits instanceof Array){
+		//remove all non numbers from digits
+		digits = digits.filter(function (e) {
+			if (isNaN(parseInt(e)) {
+				
+			}
+		});
 	 this.possibles =	_.union(digits, this.possibles);
  } else{
 	 this.possibles =	_.union([digits], this.possibles);
@@ -41,7 +47,7 @@ DigitSet.prototype.toString = function () {
 };
 
 DigitSet.prototype.toArray = function () {
-	return this.possibles.slice();
+	return this.possibles.sort().slice();
 };
 
 DigitSet.prototype.isUncertain = function () {
