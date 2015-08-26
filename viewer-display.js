@@ -1,5 +1,7 @@
-var str = '123456789123456789123456789123456789123456789123456789123456789123456789123456789';
+var DigiSet = require("./digiset.js");
+var ObjectFactory = require("./DigiSet_Constructor.js");
 
+var Viewer = function(str){
 function splitter(str){
  var x = str.split('');
  var arr = [];
@@ -21,37 +23,15 @@ function splitter(str){
 
 spltArray = (splitter(str));
 
-function columns(arr){
- colm = [];
-for(var x = 0; x < arr.length; x++){
- colm.push('!');
- for(var i = 0; i < arr.length; i++){
-   colm.push(arr[i][x]);
- }
-}
-colm = colm.join('').split('!').slice(1);
-}
 
-columns(spltArray);
-
-function blocks(row){
- var block = [];
- for (var i = 0; i < 3; i++) {
-   block.push(row[i]);
-   block.push(row[i+1]);
-   block.push(row[i+2]) ;
- }
-}
-
-blocks(spltArray);
 var plot = spltArray;
 function joiner(str){
-  arr=[]
+  arr=[];
   y = str.split("");
   x = y.join(" ");
   return x;
 }
-var arr = plot.map(joiner)
+var arr = plot.map(joiner);
 var view = console.log("+-------+-------+-------+" + "\n"
 +"| "+arr[0]+" | "+arr[1]+" | "+arr[2]+" |"+"\n"
 +"| "+arr[3]+" | "+arr[4]+" | "+arr[5]+" |"+"\n"
@@ -65,3 +45,6 @@ var view = console.log("+-------+-------+-------+" + "\n"
 +"| "+arr[21]+" | "+arr[22]+" | "+arr[23]+" |"+"\n"
 +"| "+arr[24]+" | "+arr[25]+" | "+arr[26]+" |"+"\n"
 +"+-------+-------+-------+")
+}
+
+module.exports = Viewer;
