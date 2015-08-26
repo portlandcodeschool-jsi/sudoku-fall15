@@ -19,4 +19,25 @@ describe('digitsets testing', function() {
       expect(game.digitsets[3].posssibilities.length).to.equal(8);
     });
   });
+
+  describe('Test the .size() method of a digitset instance', function() {
+
+    it('Should return true', function() {
+      expect(game.digitsets[0].size()).to.be.a("number");
+    });
+
+    it('Should return 1', function() {
+      expect(game.digitsets[0].size()).to.equal(1);
+    });
+
+    it('Should return 9', function() {
+      expect(game.digitsets[3].size()).to.equal(9);
+    });
+
+});
+
+
+
+
+
 });
