@@ -21,17 +21,21 @@ DigitSet.prototype.set = function (arrayOfDigits) {
 };
 
 DigitSet.prototype.add = function (digits) {
-	if (digits instanceof Array){
-		//remove all non numbers from digits
-		digits = digits.filter(function (e) {
-			if (isNaN(parseInt(e)) {
-				
-			}
-		});
-	 this.possibles =	_.union(digits, this.possibles);
- } else{
-	 this.possibles =	_.union([digits], this.possibles);
- }
+  if (digits instanceof Array) {
+    // remove all non numbers from digits
+    digits = digits.filter(function (e) {
+      if (isNaN(parseInt(e))) {
+        return false;
+      }
+      if (parseInt(e) < 1 || parseInt(e) > 9) {
+        return false;
+      }
+      return true;
+    });
+    this.possibles =	_.union(digits, this.possibles);
+  } else {
+    this.possibles =	_.union([digits], this.possibles);
+  }
 };
 
 DigitSet.prototype.eliminate = function (digits) {
@@ -65,7 +69,5 @@ DigitSet.prototype.contains = function (digit) {
 		return false;
 	}
 };
-
-console.log(DigitSet);// for testing only
 
 module.exports = DigitSet;
