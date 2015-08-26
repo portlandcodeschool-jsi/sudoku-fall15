@@ -33,7 +33,7 @@ DigitSet.prototype.set = function (arrayOfDigits) {
   } else {
     return;
   }
-  this.possibles = _union(arrayOfDigits);
+  this.possibles = _.union(arrayOfDigits);
 };
 
 DigitSet.prototype.add = function (digits) {
@@ -79,3 +79,7 @@ DigitSet.prototype.contains = function (digit) {
 };
 
 module.exports = DigitSet;
+
+var d = new DigitSet();
+d.set(["4", "1"]);
+console.log(d.toArray());
