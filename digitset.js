@@ -8,6 +8,12 @@ function DigitSet(singleDigit) {
   this.size = function() {
     return this.possibilities.length;
   };
+  this.possibilitiesAsString = function(){
+    return this.possibilities.join();
+  };
+  this.possibilitiesAsArray = function(){
+    return this.possibilities;
+  };
 
   if ( singleDigit === ".") {
      this.possibilities = ["1","2","3","4","5","6","7","8","9"];

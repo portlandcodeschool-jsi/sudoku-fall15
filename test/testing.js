@@ -34,7 +34,20 @@ describe('digitsets testing', function() {
       expect(game.digitsets[3].size()).to.equal(9);
     });
 
-});
+  });
+
+
+  describe('Test the possibilitiesAsString() method', function() {
+    it('Should return string', function() {
+      expect(game.digitsets[0].possibilitiesAsString()).to.be.a("string");
+    });
+  });
+
+  describe('Test the possibilitiesAsArray() method', function() {
+    it('Should return array', function() {
+      expect(game.digitsets[0].possibilitiesAsArray()).to.be.a("array");
+    });
+  });
 
 
 
