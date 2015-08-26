@@ -4,7 +4,12 @@ var _ = require('lodash');
 
 function DigitSet(singleDigit) {
   this.possibilities = [];
-  this.removePossibleValue = function(digit) {};
+
+  this.removePossibleValue = function(digit) {
+    var location = this.possibilities.indexOf(digit);
+    this.possibilities.splice(location , 1);
+  };
+
   this.size = function() {
     return this.possibilities.length;
   };
