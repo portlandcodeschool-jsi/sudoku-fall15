@@ -45,13 +45,24 @@ describe('Testing DigitSet Methods', function() {
         expect(digitset.toArray()).to.deep.equal(['3','4','5','6','7','8','9']);
     });
     it('add 1, 2, Z, 100', function(){
-        digitset.add(['1', '2', 'Z', '50']);
+        digitset.add(['1', '2', 'Z', '100']);
         expect(digitset.size()).to.equal(9);
         expect(digitset.toArray()).to.deep.equal(['1','2','3','4','5','6','7','8','9']);
     });
     it('replaces the array of digits with new possibles', function(){
         digitset.set(['1','2','3']);
         expect(digitset.toArray()).to.deep.equal(['1','2','3']);
+    });
+    it('passing in a failed set', function(){
+        digitset.set(['1','2','z', '-8']);
+        expect(digitset.toArray()).to.deep.equal(['1','2']);
+    });
+    it('checks to see if there is more than one possbile', function(){
+        expect(digitset.isUncertain()).to.be.true;
+    });
+    it('should return false if digitset has only one possible ', function(){
+       digitset.eliminate(['1']);
+       expect(digitset.isUncertain()).to.be.false;
     });
   });
 });

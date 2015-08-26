@@ -59,7 +59,6 @@ DigitSet.prototype.toString = function () {
 };
 
 DigitSet.prototype.toArray = function () {
-
 	this.possibles.sort();
 	return this.possibles.slice();
 };
