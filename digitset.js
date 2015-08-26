@@ -4,13 +4,13 @@ var _ = require('lodash');
 function DigitSet(possibles) {
 	this.possibles = [];
   if (arguments.length === 0){
-    this.possibles = [1,2,3,4,5,6,7,8,9];
+    this.possibles = ['1','2','3','4','5','6','7','8','9'];
 	} else if (possibles instanceof Array){
 		this.possibles = _.union(possibles);
 	} else {
 		this.possibles = [possibles];
 	}
-};
+}
 
 DigitSet.prototype.size = function () {
   return this.possibles.length;
