@@ -99,3 +99,5 @@ var potential = [];
   console.log(square.getRow());
   console.log(square.getBlock());
   console.log(square.potential());
+
+	module.exports = ObjectFactory;
