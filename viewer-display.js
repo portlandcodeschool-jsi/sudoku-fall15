@@ -1,5 +1,7 @@
-var str = '.2............48...54.18.3.7....1..4....86.5.......6........1......2...923.4....5';
-function viewer(){
+var DigiSet = require("./digiset.js");
+var ObjectFactory = require("./DigiSet_Constructor.js");
+
+var Viewer = function(str){
 function splitter(str){
  var x = str.split('');
  var arr = [];
