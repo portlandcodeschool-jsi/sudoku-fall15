@@ -44,8 +44,8 @@ describe('Testing DigitSet Methods', function() {
         expect(digitset.size()).to.equal(7);
         expect(digitset.toArray()).to.deep.equal(['3','4','5','6','7','8','9']);
     });
-    it('add 1, 2, Z', function(){
-        digitset.add(['1', '2', 'Z']);
+    it('add 1, 2, Z, 100', function(){
+        digitset.add(['1', '2', 'Z', '50']);
         expect(digitset.size()).to.equal(9);
         expect(digitset.toArray()).to.deep.equal(['1','2','3','4','5','6','7','8','9']);
     });
