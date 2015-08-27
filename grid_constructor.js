@@ -1,24 +1,18 @@
-var DigitSet = require('./digitset');
-var ObjectFactory = require('./DigitSet_Constructor.js');
-var TestStrGenerator = require('./data_into_testString.js');
+var testStr = require('./main');
+var Viewer = require('./viewer-display');
+var ObjectFactory = require('./digitSet_Constructor');
+var currentStr = require('./updater');
+
 
 var cellSet = [];
+var newStr = testStr;
+var GridFactory = function() {
 
-var GridFactory = function(testStrGenerator) {
 		for (var id = 0; id < 81; id ++ ) {
 			cellSet[id] = new ObjectFactory(id);
 		}
-		// this.givenValue =
 };
 
-// GridFactory();
-// console.log(cellSet);
-//
-// var cell = new ObjectFactory(14);
-// console.log(cell.block);
 
-
-
-console.log(ObjectFactory);// for testing only
 
 module.exports = GridFactory;
