@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "async": "node extras/async-demo.js"
   },
-  "author": "Dan Bauer",
+  "author": "Trivial Conflict",
   "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
   "dependencies": {
+    "chai": "^3.2.0",
     "lodash": "^3.10.1",
     "moment": "^2.10.6"
   }

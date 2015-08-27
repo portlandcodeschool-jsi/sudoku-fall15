@@ -8,3 +8,5 @@ var game = new Grid(testStr);
 
 var viewer = new Viewer(game);
 viewer.show();
+
+console.log(game.digitsets);
