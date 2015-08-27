@@ -1,6 +1,7 @@
 var _ = require('lodash');
 
 function removeInvalidArrayObjects(a) {
+  if (!(a instanceof Array)) a = [a];
   return a.filter(function (e) {
     if (isNaN(parseInt(e, 10))) {
       return false;
@@ -16,10 +17,8 @@ function DigitSet(possibles) {
   this.possibles = [];
   if (arguments.length === 0){
     this.possibles = ['1','2','3','4','5','6','7','8','9'];
-  } else if (possibles instanceof Array){
-    this.possibles = _.union(possibles);
   } else {
-    this.possibles = [possibles];
+    this.add(possibles)
   }
 }
 
@@ -37,13 +36,8 @@ DigitSet.prototype.set = function (arrayOfDigits) {
 };
 
 DigitSet.prototype.add = function (digits) {
-  if (digits instanceof Array) {
-    // remove all non numbers from digits
-    digits = removeInvalidArrayObjects(digits);
-    this.possibles =  _.union(digits, this.possibles);
-  } else {
-    this.possibles =  _.union([digits], this.possibles);
-  }
+  digits = removeInvalidArrayObjects(digits);
+  this.possibles =  _.union(digits, this.possibles);
 };
 
 DigitSet.prototype.eliminate = function (digits) {
@@ -55,6 +49,7 @@ DigitSet.prototype.eliminate = function (digits) {
 };
 
 DigitSet.prototype.toString = function () {
+  // TODO: possibly join with empty string
   return this.possibles.join(',');
 };
 
@@ -83,4 +78,4 @@ module.exports = DigitSet;
 
 var d = new DigitSet();
 d.set(["4", "1"]);
-console.log(d.toArray());
+// console.log(d.toArray());
