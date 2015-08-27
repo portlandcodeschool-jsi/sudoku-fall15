@@ -41,11 +41,8 @@ DigitSet.prototype.add = function (digits) {
 };
 
 DigitSet.prototype.eliminate = function (digits) {
-  if (digits instanceof Array){
-   this.possibles = _.difference(this.possibles, digits);
- } else{
-   this.possibles = _.difference(this.possibles, [digits]);
- }
+  digits = removeInvalidArrayObjects(digits);
+  this.possibles = _.difference(this.possibles, digits);
 };
 
 DigitSet.prototype.toString = function () {
