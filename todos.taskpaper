@@ -1,13 +1,11 @@
 FEATURES:
-DigitSet constructor:
-- new DigitSet() --> digitSet instance @done
-- new DigitSet(digitArray) --> digitSet instance @done
-- new DigitSet(singleDigit) --> digitSet instance @done
-DigitSet instance methods:
-- digitSet.size() --> integer 0-9; how many digits are possible here @done
+Set instance @done
+- new DigittSet instance @done
+- new DigigitSet instance @done
+DigitSare possible here @done
 - digitSet.set(arrayOfDigits) @done
-- digitSet.add(digit) --> undefined, modify original @done
-- digitSet.add(digitSet) --> undefined, modify original @done
+inal @done
+- digitSet.add(digiify original @done
 - digitSet.eliminate(digit) --> modify @done
 - digitSet.eliminate(digitSet) @done
 - digitSet.toString() --> string of digits in set @done
