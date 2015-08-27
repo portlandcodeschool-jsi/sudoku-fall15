@@ -23,6 +23,18 @@ function Grid(initStr) {
 	this.getBlock = function(cellToken) {
 		return 3*Math.floor(Math.floor(cellToken/9)/3)+Math.floor(cellToken%9/3);
 	};
+
+	this.toString = function() {
+		var callBack = function( element, index, array ) {
+			if ( element.possibilities.length === 1 ) {
+				return element.possibilities;
+			} else {
+				return "."
+			}
+		};
+  	return self.digitsets.map(callBack).join('');;
+	};
+
 };
 
 // console.log(Grid); // for testing only
