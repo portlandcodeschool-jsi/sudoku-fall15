@@ -1,6 +1,9 @@
-var DigiSet = require("./digiset.js");
-var ObjectFactory = require("./DigiSet_Constructor.js");
+var GridFactory = require('./grid_constructor');
+var ObjectFactory = require('./digitSet_Constructor');
+var currentStr = require('./updater');
+var testStr = require('./main');
 
+var cellSet = [];
 var Viewer = function(str){
 function splitter(str){
  var x = str.split('');
