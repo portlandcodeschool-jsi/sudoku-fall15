@@ -41,13 +41,16 @@ DigitSet.prototype.add = function (digits) {
 };
 
 DigitSet.prototype.eliminate = function (digits) {
+  if (digits.constructor === DigitSet.prototype.constructor) {
+    digits = digits.toArray();
+  }
   digits = removeInvalidArrayObjects(digits);
   this.possibles = _.difference(this.possibles, digits);
 };
 
-DigitSet.prototype.toString = function () {
-  // TODO: possibly join with empty string
-  return this.possibles.join(',');
+DigitSet.prototype.toString = function (delim) {
+  if (arguments.length === 0) delim = ","
+  return this.possibles.join(delim);
 };
 
 DigitSet.prototype.toArray = function () {
@@ -72,7 +75,3 @@ DigitSet.prototype.contains = function (digit) {
 };
 
 module.exports = DigitSet;
-
-var d = new DigitSet();
-d.set(["4", "1"]);
-// console.log(d.toArray());
