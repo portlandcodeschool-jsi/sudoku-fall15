@@ -2,16 +2,15 @@ var Grid = require('../grid.js');
 var expect = require('chai').expect;
 
 
-
 describe('digitsets testing', function() {
 
-//Remove
-  describe('Test the removePossibleValue method of a digitset', function() {
+  // Eliminate
+  describe('Test the eliminate method of a digitset', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
     var game = new Grid(testStr);
 
     before(function() {
-      game.digitsets[3].removePossibleValue("7");
+      game.digitsets[3].eliminate("7");
     });
 
     it('Should return -1', function() {
@@ -25,7 +24,7 @@ describe('digitsets testing', function() {
   });
 
 
-//Size
+  // Size
   describe('Test the .size() method of a digitset instance', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
     var game = new Grid(testStr);
@@ -45,87 +44,70 @@ describe('digitsets testing', function() {
   });
 
 
-
-//AsString
-  describe('Test the possibilitiesAsString() method', function() {
+  // toString
+  describe('Test the toString() method', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
     var game = new Grid(testStr);
 
     it('Should return string', function() {
-      expect(game.digitsets[0].possibilitiesAsString()).to.be.a("string");
+      expect(game.digitsets[0].toString()).to.be.a("string");
     });
   });
 
 
-//AsArray
-  describe('Test the possibilitiesAsArray() method', function() {
+  // toArray
+  describe('Test the toArray() method', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
     var game = new Grid(testStr);
 
     it('Should return array', function() {
-      expect(game.digitsets[0].possibilitiesAsArray()).to.be.a("array");
+      expect(game.digitsets[0].toArray()).to.be.a("array");
     });
   });
 });
 
 
 
-
-
-
-
-
-
-
-//Grid Tests
-
-
 describe('Grid testing', function() {
 
+  // getRow
   describe('Test getRow Method', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
     var game = new Grid(testStr);
 
-      it('', function() {
-        expect(game.getRow(15)).to.equal(1);
-      });
-
-      it('', function() {
-        expect(game.getRow(36)).to.equal(4);
-      });
-
-      it('', function() {
-        expect(game.getRow(77)).to.equal(8);
-      });
-
-      it('', function() {
-        expect(game.getColumn(15)).to.equal(6);
-      });
-
-      it('', function() {
-        expect(game.getColumn(49)).to.equal(4);
-      });
-
-      it('', function() {
-        expect(game.getColumn(68)).to.equal(5);
-      });
-
+    it('', function() {
+      expect(game.getRow(15)).to.equal(1);
     });
 
-    describe('Test toString Method', function() {
-      var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
-      var game = new Grid(testStr);
-
-      it('Should return tstStr', function() {
-        expect(game.toString()).to.equal('158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413');
-      });
-
+    it('', function() {
+      expect(game.getRow(36)).to.equal(4);
     });
 
+    it('', function() {
+      expect(game.getRow(77)).to.equal(8);
+    });
 
+    it('', function() {
+      expect(game.getColumn(15)).to.equal(6);
+    });
 
+    it('', function() {
+      expect(game.getColumn(49)).to.equal(4);
+    });
 
-
-
-
+    it('', function() {
+      expect(game.getColumn(68)).to.equal(5);
+    });
   });
+
+
+  // toString
+  describe('Test toString Method', function() {
+    var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+    var game = new Grid(testStr);
+
+    it('Should return tstStr', function() {
+      expect(game.toString()).to.equal('158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413');
+    });
+  });
+});
