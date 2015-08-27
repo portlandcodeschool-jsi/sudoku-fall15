@@ -6,4 +6,5 @@ var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2
 var game = new Grid(testStr);
 
 var viewer = new Viewer(game);
-viewer.show();
+console.log(viewer.drawSelf());
+console.log(viewer.showHint(3));
