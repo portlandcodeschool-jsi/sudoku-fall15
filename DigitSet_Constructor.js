@@ -1,12 +1,13 @@
-var TestStrGenerator = require('./data_into_testString.js');
-var GridFactory = require('./grid_constructor.js');
-var currentStr = require('./main.js');
+var GridFactory = require('./grid_constructor');
+var testStr = require('./main');
+var Viewer = require('./viewer-display');
+var currentStr = require('./updater');
 
 var str = currentStr;
 
 var ObjectFactory = function(id) {
 		var potential = [];
-
+		var arr = [];
 		this.id = id;
 		this.row = (Math.ceil((id+1)/9));
 		this.column = (id % 9) + 1;
@@ -90,8 +91,8 @@ var ObjectFactory = function(id) {
 
 	};
 
-	// var cell = new ObjectFactory(12);
-	// console.log(cell);
+	var cell = new ObjectFactory(12);
+	console.log(cell);
 
   // console.log(square.getColumn());
   // console.log(square.getRow());

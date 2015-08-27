@@ -35,7 +35,7 @@ function joiner(str){
   return x;
 }
 var arr = plot.map(joiner);
-var view = console.log("+-------+-------+-------+" + "\n"
+var view = ("+-------+-------+-------+" + "\n"
 +"| "+arr[0]+" | "+arr[1]+" | "+arr[2]+" |"+"\n"
 +"| "+arr[3]+" | "+arr[4]+" | "+arr[5]+" |"+"\n"
 +"| "+arr[6]+" | "+arr[7]+" | "+arr[8]+" |"+"\n"
@@ -48,6 +48,8 @@ var view = console.log("+-------+-------+-------+" + "\n"
 +"| "+arr[21]+" | "+arr[22]+" | "+arr[23]+" |"+"\n"
 +"| "+arr[24]+" | "+arr[25]+" | "+arr[26]+" |"+"\n"
 +"+-------+-------+-------+")
-}
+console.log(view);
+};
+
 
 module.exports = Viewer;
