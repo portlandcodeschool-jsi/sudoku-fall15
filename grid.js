@@ -1,6 +1,12 @@
 var DigitSet = require('./digitset');
 var _ = require('lodash');
 
+function validateCellToken(cellToken) {
+  if (typeof(cellToken) !== "number" || cellToken < 0 || cellToken > 80) {
+    return false;
+  }
+  return true;
+}
 
 function Grid(initstr) {
 	this.allCells = [];
@@ -32,15 +38,17 @@ Grid.prototype.getCell = function (id) {
 };
 
 Grid.prototype.getRow = function (cellToken) {
-  return Math.floor(cellToken / 9);
+  return validateCellToken(cellToken) ? Math.floor(cellToken / 9) : NaN;
 };
 
 Grid.prototype.getCol = function (cellToken) {
-  return cellToken % 9;
+  return validateCellToken(cellToken) ? Math.floor(cellToken % 9) : NaN;
 };
 
 Grid.prototype.getBlock = function (cellToken) {
-  return (Math.floor(this.getRow(cellToken) / 3) * 3) + (Math.floor(this.getCol(cellToken) / 3))
+  return validateCellToken(cellToken) ?
+    (Math.floor(this.getRow(cellToken) / 3) * 3) + (Math.floor(this.getCol(cellToken) / 3)) :
+    NaN;
 };
 
 Grid.prototype.getDigitSetsForRow = function (cellToken) {
@@ -194,3 +202,4 @@ var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6....
 myGrid.getDigitSetsForBlock(23);
 // console.log(myGrid.cells());
 module.exports = Grid;
+console.log(validateCellToken(10));
