@@ -3,6 +3,7 @@ var Grid = require('./grid.js');
 
 function Viewer(grid) {
 	this.grid = grid;
+	this.album = [];
 }
 
 Viewer.prototype.drawSelf = function() {
@@ -39,17 +40,21 @@ Viewer.prototype.showHint = function(cellToken) {
 	board.splice(cellToken, 1, '*' );
 	var string = board.join('');
 	var hint = this.createASCIIBoard(string);
-	hint += '\n\n\n* Could be:' + this.grid.allCells[cellToken].toString();
+	hint += '\n\n\n* Could be:' + this.grid.cells()[cellToken].toString();
 	return hint;
 };
 
 Viewer.prototype.snapshot = function(){
+	var pic =  this.createASCIIBoard(this.grid.toString());
+	this.album.push(pic);
+	return pic;
+};
 
-}
-
-Viewer.prototype.playBack = function() {
-
-}
+// TODO: When we have an interface.
+// Viewer.prototype.playBack = function() {
+//
+// 	setInterval(1000)
+// };
 
 
 module.exports = Viewer;
