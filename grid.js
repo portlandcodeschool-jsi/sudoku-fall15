@@ -39,6 +39,11 @@ function Grid(initString) {
 		};
 	};
 
+	this.groups = function(cellToken) {
+		//This will return an array of the rowToken, columnToken, and blockToken associated with the given cellToken
+		return [this.getRow(cellToken), this.getCol(cellToken), this.getBlock(cellToken)];
+	};
+
 	this.getPossible = function(cellToken) {
 		//This will return the Possible Values of a Specific DigitSet
 		return this.digitsets[cellToken].possibilities;
@@ -48,8 +53,6 @@ function Grid(initString) {
 		//This will Set the Possible Values of a Specific DigitSet
 		this.digitsets[cellToken] = digitSet;
 	};
-
-
 
 	this.toString = function() {
 		var callBack = function( element, index, array ) {
@@ -61,7 +64,6 @@ function Grid(initString) {
 		};
   	return self.digitsets.map(callBack).join('');;
 	};
-
 };
 
 // console.log(Grid); // for testing only
