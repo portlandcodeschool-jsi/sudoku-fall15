@@ -67,7 +67,7 @@ describe('Testing DigitSet Methods', function() {
     it('should remove one DigitSet from another', function(){
       var ds1 = new DigitSet();
       var ds2 = new DigitSet(["1", "2", "3"]);
-      ds1.subtract(ds2);
+      ds1.eliminate(ds2);
       expect(ds1.toArray()).to.deep.equal(new DigitSet(["4", "5", "6", "7", "8", "9"]).toArray());
     })
   });
