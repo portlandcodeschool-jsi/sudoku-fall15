@@ -3,7 +3,7 @@ var _ = require('lodash');
 
 
 function Grid(initstr) {
-	this.cells = [];
+	this.allCells = [];
 	if (arguments.length > 0){
 	 var values = initstr.split("");
 	 values = values.map(function(e){
@@ -15,16 +15,16 @@ function Grid(initstr) {
 	 });
 	 values.forEach(function(e){
      if (e !== null) {
-       this.cells.push(new DigitSet(e));
+       this.allCells.push(new DigitSet(e));
      } else {
-       this.cells.push(new DigitSet());
+       this.allCells.push(new DigitSet());
      }
  	}, this);
 	}
 }
 
-Grid.prototype.getCells = function () {
-  return this.cells.slice();
+Grid.prototype.cells = function () {
+  return this.allCells.slice();
 };
 
 Grid.prototype.getRow = function (cellToken) {
@@ -50,7 +50,7 @@ Grid.prototype.getDigitSetsForRow = function (cellToken) {
     cellIds.push(row * 9 + i);
   }
   cellIds.forEach(function(e){
-    digitSets.push(this.cells[e]);
+    digitSets.push(this.allCells[e]);
   }, this);
   return digitSets;
 };
@@ -66,7 +66,7 @@ Grid.prototype.getDigitSetsForCol = function (cellToken) {
     cellIds.push(col + 9 * i);
   }
   cellIds.forEach(function(e){
-    digitSets.push(this.cells[e]);
+    digitSets.push(this.allCells[e]);
   }, this);
   return digitSets;
 };
@@ -86,7 +86,7 @@ Grid.prototype.getDigitSetsForBlock = function (cellToken) {
     cellIds.push(9 * Math.floor(i / 3) + (i % 3) + topLeftSquare);
   }
   cellIds.forEach(function(e){
-    digitSets.push(this.cells[e]);
+    digitSets.push(this.allCells[e]);
   }, this);
   return digitSets;
 };
@@ -141,4 +141,6 @@ console.log();
 // console.log(myGrid.getRow(18));
 // myGrid.getDigitSetsForBlock(23);
 // console.log(myGrid.getCells());
+myGrid.getDigitSetsForBlock(23);
+// console.log(myGrid.cells());
 module.exports = Grid;
