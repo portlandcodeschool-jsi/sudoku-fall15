@@ -108,7 +108,7 @@ Grid.prototype.getNeighborhood = function (cellToken) {
 Grid.prototype.remainingArray = function () {
   // look at every cell, build array of all uncertain cells, and return length of that array
   var uncertainCells = [];
-  this.cells.forEach(function (e) {
+  this.allCells.forEach(function(e) {
     if (e.isUncertain()) {
       uncertainCells.push(e)
     }
@@ -120,18 +120,64 @@ Grid.prototype.remaining = function () {
   return this.remainingArray().length;
 }
 
+
+Grid.prototype.save = function () {
+	return this.allCells.slice();
+};
+
+Grid.prototype.restore = function (state) {
+  this.allCells = state.slice();
+};
+
+Grid.prototype.toString = function () {
+	var string = "";
+    this.allCells.forEach(function(e){
+			if(e.isUncertain()){
+				string += ".";
+			}else{
+				string += e.toString();
+			}
+		});
+		return string;
+};
+
+
+Grid.prototype.fromString = function (initstr) {
+	this.allCells = [];
+	var values = initstr.split("");
+	values = values.map(function(e){
+		if (e === "."){
+			return null;
+		} else{
+			return e;
+		}
+	});
+	values.forEach(function(e){
+		if (e !== null) {
+			this.allCells.push(new DigitSet(e));
+		} else {
+			this.allCells.push(new DigitSet());
+		}
+	}, this);
+};
+
+
+
+
 var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8");
 // myGrid = new Grid("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
 
 // console.log(myGrid.getDigitSetsForBlock(3));
 // console.log(myGrid.getDigitSetsForBlock(40));
-// console.log(myGrid.getNeighborhood(40));
-console.log(myGrid.remaining());
-console.log();
-var thisCell = myGrid.remainingArray()[7];
-var thisCellsAbsID = myGrid.cells.indexOf(thisCell);
-console.log(thisCellsAbsID);
-console.log();
+// // console.log(myGrid.getNeighborhood(40));
+// console.log(myGrid.remaining());
+// console.log();
+// // var thisCell = myGrid.remainingArray()[7];
+// // var thisCellsAbsID = myGrid.cells.indexOf(thisCell);
+// console.log(thisCellsAbsID);
+// console.log();
+
+
 
 
 // console.log(myGrid);// for testing only

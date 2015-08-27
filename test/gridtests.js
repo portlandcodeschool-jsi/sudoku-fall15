@@ -39,16 +39,38 @@ describe('Testing Grid', function() {
       expect(grid.getCol('')).to.equal(NaN);
     });
   });
-  describe('grid.getCells()', function() {
+  describe('grid.cells()', function() {
 
-    it('getCells() should return an Array', function() {
-      expect(grid.getCells()).to.be.an.instanceof(Array);
+    it('cells() should return an Array', function() {
+      expect(grid.cells()).to.be.an.instanceof(Array);
     });
     it('That has 81 members', function() {
-      expect(grid.getCells().length).to.equal(81);
+      expect(grid.cells().length).to.equal(81);
     });
     it('First digitset should contain 1', function() {
-      expect(grid.getCells()[0]).to.deep.equal(new DigitSet('1'));
+      expect(grid.cells()[0]).to.deep.equal(new DigitSet('1'));
+    });
+  });
+});
+
+describe('Testing Grid', function() {
+    before(function() {
+      grid = new Grid('123456789456789123789123456234567891567891234891234567345678912678912345912345678');
+
+    });
+
+  describe('grid.toString()', function() {
+    it('should return the entire grid as a string ', function() {
+      grid = new Grid('5...68..........6..42.5.......8..9....1....4.9.3...62.7....1..9..42....3.8.......');
+      expect(grid.toString()).to.equal('5...68..........6..42.5.......8..9....1....4.9.3...62.7....1..9..42....3.8.......');
+    });
+    it('setting a number to a certain digitset', function() {
+      grid.allCells[1].set(['9']);
+      expect(grid.toString()).to.equal('59..68..........6..42.5.......8..9....1....4.9.3...62.7....1..9..42....3.8.......');
+    });
+    it('making a failed test', function() {
+    grid.fromString('59..68..........6..42.5...4...8..9....16...4.9.3...62.7....1..9..42....3.8.......');
+    expect(grid.toString()).to.equal('59..68..........6..42.5...4...8..9....16...4.9.3...62.7....1..9..42....3.8.......');
     });
   });
 });
