@@ -41,8 +41,17 @@ DigitSet.prototype.add = function (digits) {
 };
 
 DigitSet.prototype.eliminate = function (digits) {
-  digits = removeInvalidArrayObjects(digits);
-  this.possibles = _.difference(this.possibles, digits);
+  if (digits instanceof Array) {
+    this.possibles = _.difference(this.possibles, digits);
+  } else {
+    this.possibles = _.difference(this.possibles, [digits]);
+  }
+};
+
+// subracts `digitSet` from the caller
+DigitSet.prototype.subtract = function (digitSet) {
+  if (digitSet.constructor !== DigitSet.prototype.constructor) return;
+  this.eliminate(digitSet.toArray());
 };
 
 DigitSet.prototype.toString = function () {
