@@ -2,32 +2,32 @@
 
 function SudokuViewer(grid) {
 
-	this.showCertain() {
+	this.showCertain = function() {
 		//This will show a 9x9 grid of the Certain DigitSets
 	};
 
-	this.showPossible() {
+	this.showPossible = function() {
 		//This will show a 9x9 grid of the DigitSets with all Possibilites
 	};
 
-	this.showDebug() {
+	this.showDebug = function() {
 		//?
 	};
 
-	this.showHint(cellToken) {
+	this.showHint = function(cellToken) {
 		//Show the Possibilities of a particular DigitSet
 	};
 
-	this.snapshot() {
+	this.snapshot = function() {
 		//This will store a snapshot
 		//It will call grid.toString() , and store that value
 	};
 
-	this.playback() {
+	this.playback = function() {
 		//This will replay all of the snapshots
 	};
 
-	this.startTimer() {
+	this.startTimer = function() {
 		//?
 	};
 
