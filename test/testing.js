@@ -126,3 +126,28 @@ describe('Grid testing', function() {
   });
 
 });
+
+
+//testView
+describe ('Test viewGrid Method', function(){
+  var testBoard =
+"+---------+---------+---------+\n" +
+"| 1  5  8 | .  2  . | .  6  . |\n" +
+"| 2  .  . | .  8  . | .  9  . |\n" +
+"| .  3  . | .  7  . | 8  .  2 |\n" +
+"+---------+---------+---------+\n" +
+"| .  6  . | 7  4  . | .  .  . |\n" +
+"| .  .  4 | .  6  . | 7  .  . |\n" +
+"| .  .  . | .  1  9 | .  5  . |\n" +
+"+---------+---------+---------+\n" +
+"| 4  .  9 | .  3  . | .  2  . |\n" +
+"| .  2  . | .  5  . | .  .  8 |\n" +
+"| .  7  . | .  9  . | 4  1  3 |\n" +
+"+---------+---------+---------+\n";
+
+
+
+it('Should return testBoard', function(){
+expect(viewer.showCertain(testBoard)).to.be.equal(viewGrid);
+});
+});
