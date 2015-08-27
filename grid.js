@@ -27,6 +27,10 @@ Grid.prototype.cells = function () {
   return this.allCells.slice();
 };
 
+Grid.prototype.getCell = function (id) {
+  return this.allCells[id];
+};
+
 Grid.prototype.getRow = function (cellToken) {
   return Math.floor(cellToken / 9);
 };
