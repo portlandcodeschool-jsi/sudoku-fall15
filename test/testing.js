@@ -1,6 +1,6 @@
 var Grid = require('../grid.js');
 var expect = require('chai').expect;
-
+var Viewer = require('../viewer.js');
 
 //Hello - it's 12:13PM - I'm Pat
 describe('digitsets testing', function() {
@@ -69,7 +69,7 @@ describe('digitsets testing', function() {
 
 describe('Grid testing', function() {
 
-  // getRow
+  // getRow and getCol
   describe('Test getRow Method', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
     var game = new Grid(testStr);
@@ -111,7 +111,7 @@ describe('Grid testing', function() {
   });
 
   // getPossible
-  describe('Test toString Method', function() {
+  describe('Test getPossible Method', function() {
     var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
     var game = new Grid(testStr);
 
@@ -130,8 +130,10 @@ describe('Grid testing', function() {
 
 
 //testView
-describe ('Test viewGrid Method', function(){
+describe ('Test viewer Methods', function(){
   var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+  var game = new Grid(testStr);
+  var viewer = new Viewer(game);
   var testBoard =
 "+---------+---------+---------+\n" +
 "| 1  5  8 | .  2  . | .  6  . |\n" +
@@ -150,6 +152,6 @@ describe ('Test viewGrid Method', function(){
 
 
 it('Should return testBoard', function(){
-expect(viewer.showCertain(testStr)).to.equal(testBoard);
+expect(viewer.showCertain()).to.equal(testBoard);
 });
 });

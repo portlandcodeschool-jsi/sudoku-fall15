@@ -5,7 +5,7 @@ function SudokuViewer(grid) {
 	this.grid = grid;
 
 	//show the certain digitsets
-	this.showCertain() {
+	this.showCertain = function() {
 
 		var str = this.grid.toString();
 
@@ -31,7 +31,7 @@ function SudokuViewer(grid) {
 		    };
 		  };
 		  element.map(addPipes);
-		  str += "| \n";
+		  str += "|\n";
 		  return str;
 		};
 		var rowBars = rowDigits.map(barsCallBack);
@@ -47,7 +47,7 @@ function SudokuViewer(grid) {
 		};
 		rowBars.forEach(makeBoardCallBack);
 		board += "+---------+---------+---------+\n";
-		console.log(board);
+
 		return board;
 
 	};
