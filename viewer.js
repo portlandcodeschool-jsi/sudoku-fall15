@@ -2,14 +2,18 @@
 
 function SudokuViewer(grid) {
 
+	this.grid = grid;
 
+	//show the certain digitsets
 	this.showCertain() {
+
+		var str = this.grid.toString();
 
 		//////////////////Group Rows Into New Arrays
 		var widenNumbers = function(element) {
 		  return " " + element + " ";
 		};
-		var wideNumbers = testStr.split('').map(widenNumbers);
+		var wideNumbers = str.split('').map(widenNumbers);
 		var rowDigits = [[],[],[],[],[],[],[],[],[]];
 		var makeRowsCallBack = function( element , index , array ) {
 		  rowDigits[Math.floor(index/9)].push(element);
