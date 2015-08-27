@@ -33,10 +33,10 @@ Grid instance methods:
 - grid.neighborhood(cellToken) --> digitSet of all known digits in same row, col, or block OR --> array of digitSets for all neighbors
 - grid.fromString(initString) --> set up grid with known digits
 - grid.toString() --> initString
-- grid.save() --> savedState
-- grid.restore(savedState)
+- grid.save() --> savedState @done
+- grid.restore(savedState) @done
 - grid.isInvalid() --> return true if notices any problems, else false?
-- grid.remaining() --> number (0-81) of uncertain cells
+- grid.remaining() --> number (0-81) of uncertain cells @done
 
 Viewer constructor:
 - new Viewer(grid) --> viewer instance
