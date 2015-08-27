@@ -3,7 +3,47 @@
 function SudokuViewer(grid) {
 
 	this.showCertain() {
-		//This will show a 9x9 grid of the Certain DigitSets
+
+		//////////////////Group Rows Into New Arrays
+		var widenNumbers = function(element) {
+		  return " " + element + " ";
+		};
+		var wideNumbers = testStr.split('').map(widenNumbers);
+		var rowDigits = [[],[],[],[],[],[],[],[],[]];
+		var makeRowsCallBack = function( element , index , array ) {
+		  rowDigits[Math.floor(index/9)].push(element);
+		};
+		wideNumbers.forEach(makeRowsCallBack);
+
+		//////////////////Concatinate Rows with Pipes
+		var barsCallBack = function( element , index , array ) {
+		  var str = "";
+		  var addPipes = function( element , index , array ) {
+		    if ( index%3 === 0) {
+		      str += "|" + element;
+		    } else {
+		      str += element;
+		    };
+		  };
+		  element.map(addPipes);
+		  str += "| \n";
+		  return str;
+		};
+		var rowBars = rowDigits.map(barsCallBack);
+
+		//////////////////Make Board
+		var board = "";
+		var makeBoardCallBack = function(element , index , array) {
+		  if (index%3 === 0) {
+		    board +=  "+---------+---------+---------+\n" + element;
+		  } else {
+		    board += element;
+		  }
+		};
+		rowBars.forEach(makeBoardCallBack);
+		board += "+---------+---------+---------+\n";
+		console.log(board);
+		return board;
 	};
 
 	this.showPossible() {
