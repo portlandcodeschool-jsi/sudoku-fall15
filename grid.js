@@ -17,7 +17,7 @@ function Grid(initString) {
 			//Method has been passed no arguments
 			//This will return all of the Rows on the Grid
 		} else {
-				return Math.floor(cellToken/9);
+				return "R" + Math.floor(cellToken/9);
 		};
 	};
 
@@ -26,7 +26,7 @@ function Grid(initString) {
 			//Method has been passed no arguments
 			//This will return all of the Columns on the Grid
 		} else {
-				return cellToken%9;
+				return "C" + cellToken%9;
 		};
 	};
 
@@ -35,13 +35,34 @@ function Grid(initString) {
 			//Method has been passed no arguments
 			//This will return all of the Blocks on the Grid
 		} else {
-			return 3*Math.floor(Math.floor(cellToken/9)/3)+Math.floor(cellToken%9/3);
+			return "B" + (3*Math.floor(Math.floor(cellToken/9)/3)+Math.floor(cellToken%9/3));
 		};
 	};
 
 	this.groups = function(cellToken) {
 		//This will return an array of the rowToken, columnToken, and blockToken associated with the given cellToken
 		return [this.getRow(cellToken), this.getCol(cellToken), this.getBlock(cellToken)];
+	};
+
+	this.cells = function(groupToken) {
+		var groupType = groupToken[0];
+		var cellTokens = [];
+
+		for (var i = 0; i <= 80; i++) {
+			switch(groupType) {
+				case "R":
+					if(this.getRow(i) === groupToken) {cellTokens.push(i);}
+
+				case "C":
+					if(this.getCol(i) === groupToken) {cellTokens.push(i);}
+
+				case "B":
+					if(this.getBlock(i) === groupToken) {cellTokens.push(i);}
+
+				default:
+					// Not sure that this is needed. Regardless, unsure how it would be used (if it were needed).
+			}
+		}
 	};
 
 	this.getPossible = function(cellToken) {
