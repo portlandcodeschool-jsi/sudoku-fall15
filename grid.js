@@ -35,7 +35,9 @@ Grid.prototype.getCol = function (cellToken) {
   return cellToken % 9;
 };
 
-
+Grid.prototype.getBlock = function (cellToken) {
+  return (Math.floor(this.getRow(cellToken) / 3) * 3) + (Math.floor(this.getCol(cellToken) / 3))
+};
 
 Grid.prototype.getDigitSetsForRow = function (cellToken) {
   var row = this.getRow(cellToken);
@@ -103,14 +105,33 @@ Grid.prototype.getNeighborhood = function (cellToken) {
   return newDigitSet;
 };
 
+Grid.prototype.remainingArray = function () {
+  // look at every cell, build array of all uncertain cells, and return length of that array
+  var uncertainCells = [];
+  this.cells.forEach(function (e) {
+    if (e.isUncertain()) {
+      uncertainCells.push(e)
+    }
+  })
+  return uncertainCells;
+}
 
+Grid.prototype.remaining = function () {
+  return this.remainingArray().length;
+}
 
 var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8");
-myGrid = new Grid("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
+// myGrid = new Grid("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
 
 // console.log(myGrid.getDigitSetsForBlock(3));
 // console.log(myGrid.getDigitSetsForBlock(40));
-console.log(myGrid.getNeighborhood(40));
+// console.log(myGrid.getNeighborhood(40));
+console.log(myGrid.remaining());
+console.log();
+var thisCell = myGrid.remainingArray()[7];
+var thisCellsAbsID = myGrid.cells.indexOf(thisCell);
+console.log(thisCellsAbsID);
+console.log();
 
 
 // console.log(myGrid);// for testing only
