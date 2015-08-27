@@ -71,25 +71,25 @@ function Grid(initString) {
 			return this.cellTokens;
 		} else {
 			var groupType = groupToken[0];
-			var cellTokens = [];
+			var Tokens = [];
 
 			for (var i = 0; i <= 80; i++) {
 				switch(groupType) {
 					case "R":
-						if(this.getRow(i) === groupToken) {cellTokens.push(i);}
+						if(this.getRow(i) === groupToken) {Tokens.push(i);}
 
 					case "C":
-						if(this.getCol(i) === groupToken) {cellTokens.push(i);}
+						if(this.getCol(i) === groupToken) {Tokens.push(i);}
 
 					case "B":
-						if(this.getBlock(i) === groupToken) {cellTokens.push(i);}
+						if(this.getBlock(i) === groupToken) {Tokens.push(i);}
 
 					default:
 						// Not sure that this is needed. Regardless, unsure how it would be used (if it were needed).
 				}
 			}
 
-			return cellTokens;
+			return Tokens;
 		}
 	};
 
