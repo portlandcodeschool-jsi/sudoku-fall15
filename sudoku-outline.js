@@ -27,8 +27,8 @@ Methods:
 Grid objects
 ----------------
 
-Constructor:
-new Grid(initStr) ==> grid instance
+// Constructor:
+// new Grid(initStr) ==> grid instance
 
 Properties:
   digitSets: [DigitSet instances]
@@ -37,9 +37,9 @@ Methods:
   grid.getRow() ==> array of group tokens (all rows)
   grid.getCol ==> array of group tokens (all cols)
   grid.getBlock ==> array of group tokens (all blocks)
-  grid.getRow(cellToken) ==> rowToken (aka groupToken)
-  grid.getCol(cellToken) ==> columnToken (aka groupToken)
-  grid.getBlock(cellToken) ==> blockToken (aka groupToken)
+  // grid.getRow(cellToken) ==> rowToken (aka groupToken)
+  // grid.getCol(cellToken) ==> columnToken (aka groupToken)
+  // grid.getBlock(cellToken) ==> blockToken (aka groupToken)
   groups(cellToken) ==> array of rowToken, columnToken, and blockToken associated with cellToken
   grid.getPossible(cellToken) ==> array stored in possibleValues property for the given cellToken
   grid.setPossible(cellToken, digitSet) ==> undefined; removes given digit from the possibleValues property for the given cellToken

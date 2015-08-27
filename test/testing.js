@@ -1,6 +1,7 @@
 var Grid = require('../grid.js');
 var expect = require('chai').expect;
 
+
 //Hello - it's 12:13PM - I'm Pat
 describe('digitsets testing', function() {
 
@@ -74,27 +75,27 @@ describe('Grid testing', function() {
     var game = new Grid(testStr);
 
     it('Should return 1.', function() {
-      expect(game.getRow(15)).to.equal(1);
+      expect(game.getRow(15)).to.equal('R1');
     });
 
     it('Should return 4.', function() {
-      expect(game.getRow(36)).to.equal(4);
+      expect(game.getRow(36)).to.equal('R4');
     });
 
     it('Should return 8.', function() {
-      expect(game.getRow(77)).to.equal(8);
+      expect(game.getRow(77)).to.equal('R8');
     });
 
     it('Should return 6.', function() {
-      expect(game.getCol(15)).to.equal(6);
+      expect(game.getCol(15)).to.equal('C6');
     });
 
     it('Should return 4.', function() {
-      expect(game.getCol(49)).to.equal(4);
+      expect(game.getCol(49)).to.equal('C4');
     });
 
     it('Should return 5.', function() {
-      expect(game.getCol(68)).to.equal(5);
+      expect(game.getCol(68)).to.equal('C5');
     });
   });
 
