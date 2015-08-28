@@ -1,7 +1,7 @@
 
 Grid constructor
 ----------------
-  new Grid(initString) ==> grid instance
+  // new Grid(initString) ==> grid instance
 
 
 
@@ -37,24 +37,24 @@ Methods:
   grid.getRow() ==> array of group tokens (all rows)
   grid.getCol ==> array of group tokens (all cols)
   grid.getBlock ==> array of group tokens (all blocks)
-  grid.getRow(cellToken) ==> rowToken (aka groupToken)
-  grid.getCol(cellToken) ==> columnToken (aka groupToken)
-  grid.getBlock(cellToken) ==> blockToken (aka groupToken)
+  // grid.getRow(cellToken) ==> rowToken (aka groupToken)
+  // grid.getCol(cellToken) ==> columnToken (aka groupToken)
+  // grid.getBlock(cellToken) ==> blockToken (aka groupToken)
   groups(cellToken) ==> array of rowToken, columnToken, and blockToken associated with cellToken
   grid.getPossible(cellToken) ==> array stored in possibleValues property for the given cellToken
   grid.setPossible(cellToken, digitSet) ==> undefined; removes given digit from the possibleValues property for the given cellToken
   cells(groupToken) ==> array of cell tokens associated with groupToken
-  grid.toString ==> string of 81 characters
+  // grid.toString ==> string of 81 characters
 
 
 
-Viewer objects
-----------------
-
-Viewer Constructor
-new Viewer(grid) ==> viewer instance
-
-Properties:
-
-Methods:
-  displayBoard ==>
+// Viewer objects
+// ----------------
+//
+// Viewer Constructor
+// new Viewer(grid) ==> viewer instance
+//
+// Properties:
+//
+// Methods:
+//   displayBoard ==>
