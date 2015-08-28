@@ -125,6 +125,14 @@ Grid.prototype.getBlock = function (cellToken) {
   }
 };
 
+Grid.prototype.getPossible = function (cellToken) {
+  return this.allCells[cellToken];
+};
+
+Grid.prototype.setPossible = function (cellToken, digitSet) {
+  this.allCells[cellToken] =  digitSet;
+};
+
 Grid.prototype.getRowNumber = function (cellToken) {
   return validateCellToken(cellToken) ? Math.floor(cellToken / 9) : NaN;
 };
