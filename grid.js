@@ -29,7 +29,41 @@ function Grid(initstr) {
 	}
 }
 
-Grid.prototype.cells = function () {
+/*
+  TODO return array of all cell tokens, not an array of all the DigitSets
+*/
+Grid.prototype.cells = function (groupToken) {
+  var cellTokens = [];
+  if (arguments.length === 0) {
+    for (var i = 0; i < 81; i++) {
+      cellTokens.push(i);
+    }
+  } else {
+    // return array of cellTokens associated with groupToken
+    // groupToken is a two-member array: ['c', 8]
+    var groupType = groupToken[0]; // will be 'c' 'r' or 'b'
+    var groupNumber = groupToken[1]; // will be 0 ... 8
+    if (groupType === "c") {
+      for (var i = 0; i < 9; i++) {
+        cellTokens.push(groupNumber + i * 9);
+      }
+    } else if (groupType === "r") {
+      for (var i = 0; i < 9; i++) {
+        cellTokens.push(groupNumber * 9 + i);
+      }
+    } else {
+      var startingRow = Math.floor(groupNumber / 3) * 3;
+      var startingCol = (groupNumber % 3) * 3;
+      var topLeftSquare = startingRow * 9 + startingCol;
+      for (var i = 0; i < 9; i++){
+        cellTokens.push(9 * Math.floor(i / 3) + (i % 3) + topLeftSquare);
+      }
+    }
+  }
+  return cellTokens;
+};
+
+Grid.prototype.getAllDigitSets = function () {
   return this.allCells.slice();
 };
 
@@ -185,7 +219,7 @@ var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6....
 // console.log(myGrid.remaining());
 // console.log();
 // // var thisCell = myGrid.remainingArray()[7];
-// // var thisCellsAbsID = myGrid.cells.indexOf(thisCell);
+// // var thisCellsAbsID = myGrid.getAllDigitSets.indexOf(thisCell);
 // console.log(thisCellsAbsID);
 // console.log();
 
@@ -200,6 +234,6 @@ var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6....
 // myGrid.getDigitSetsForBlock(23);
 // console.log(myGrid.getCells());
 myGrid.getDigitSetsForBlock(23);
-// console.log(myGrid.cells());
+// console.log(myGrid.getAllDigitSets());
 module.exports = Grid;
 console.log(validateCellToken(10));

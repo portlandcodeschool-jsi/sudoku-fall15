@@ -40,7 +40,7 @@ Viewer.prototype.showHint = function(cellToken) {
 	board.splice(cellToken, 1, '*' );
 	var string = board.join('');
 	var hint = this.createASCIIBoard(string);
-	hint += '\n\n\n* Could be:' + this.grid.cells()[cellToken].toString();
+	hint += '\n\n\n* Could be:' + this.grid.getAllDigitSets()[cellToken].toString();
 	return hint;
 };
 
