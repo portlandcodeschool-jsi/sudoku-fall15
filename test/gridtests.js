@@ -52,35 +52,79 @@ describe('Testing Grid', function() {
         expect(grid.cells(["b", 0])[8]).to.equal(20);
       })
     });
+    describe('grid.groups()', function(){
+      it('should return an array with 27 members', function(){
+        expect(grid.groups().length).to.equal(27);
+      })
+      it('should have ["c", 0] as its first member', function(){
+        expect(grid.groups()[0]).to.deep.equal(["c", 0]);
+      })
+      it('should have ["b", 8] as its last member', function(){
+        expect(grid.groups()[26]).to.deep.equal(["b", 8]);
+      })
+    })
+    describe('grid.groups(40)', function(){
+      it('should return an array with 3 members', function(){
+        expect(grid.groups(40).length).to.equal(3);
+      })
+      it('should have ["c", 4] as its first member', function(){
+        expect(grid.groups(40)[0]).to.deep.equal(["c", 4]);
+      })
+      it('should have ["r", 4] as its second member', function(){
+        expect(grid.groups(40)[1]).to.deep.equal(["r", 4]);
+      })
+      it('should have ["b", 4] as its last member', function(){
+        expect(grid.groups(40)[2]).to.deep.equal(["b", 4]);
+      })
+    })
+    describe('grid.getRow()', function(){
+      it('should return an array with 9 members', function(){
+        expect(grid.getRow().length).to.equal(9);
+      })
+      it('should have ["r", 0] as its first member', function(){
+        expect(grid.getRow()[0]).to.deep.equal(["r", 0]);
+      })
+      it('should have ["r", 8] as its last member', function(){
+        expect(grid.getRow()[8]).to.deep.equal(["r", 8]);
+      })
+    })
+    describe('grid.getRow(53)', function(){
+      it('should return an array with 2 members', function(){
+        expect(grid.getRow(53).length).to.equal(2);
+      })
+      it('should equal ["r", 0]', function(){
+        expect(grid.getRow(53)).to.deep.equal(["r", 5]);
+      })
+    })
   });
-  describe('grid.getRow()', function() {
+  describe('grid.getRowNumber()', function() {
 
-    it('getRow(0) should return 0', function() {
-      expect(grid.getRow(0)).to.equal(0);
+    it('getRowNumber(0) should return 0', function() {
+      expect(grid.getRowNumber(0)).to.equal(0);
     });
-    it('getRow(37) should return row 4', function() {
-      expect(grid.getRow(37)).to.equal(4);
+    it('getRowNumber(37) should return row 4', function() {
+      expect(grid.getRowNumber(37)).to.equal(4);
     });
-    it('getRow(99) should return NaN', function() {
-      expect(Number.isNaN(grid.getRow(99))).to.be.true;
+    it('getRowNumber(99) should return NaN', function() {
+      expect(Number.isNaN(grid.getRowNumber(99))).to.be.true;
     });
-    it('getRow("") should return NaN', function() {
-      expect(Number.isNaN(grid.getRow(''))).to.be.true;
+    it('getRowNumber("") should return NaN', function() {
+      expect(Number.isNaN(grid.getRowNumber(''))).to.be.true;
     });
   });
-  describe('grid.getCol()', function() {
+  describe('grid.getColNumber()', function() {
 
-    it('getCol(0) should return 0', function() {
-      expect(grid.getCol(0)).to.equal(0);
+    it('getColNumber(0) should return 0', function() {
+      expect(grid.getColNumber(0)).to.equal(0);
     });
-    it('getCol(37) should return row 4', function() {
-      expect(grid.getCol(37)).to.equal(1);
+    it('getColNumber(37) should return row 4', function() {
+      expect(grid.getColNumber(37)).to.equal(1);
   });
-    it('getCol(99) should return NaN', function() {
-      expect(Number.isNaN(grid.getCol(99))).to.be.true;
+    it('getColNumber(99) should return NaN', function() {
+      expect(Number.isNaN(grid.getColNumber(99))).to.be.true;
     });
-    it('getCol("") should return NaN', function() {
-      expect(Number.isNaN(grid.getCol(''))).to.be.true;
+    it('getColNumber("") should return NaN', function() {
+      expect(Number.isNaN(grid.getColNumber(''))).to.be.true;
     });
   });
   describe('grid.getAllDigitSets()', function() {
