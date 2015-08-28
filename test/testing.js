@@ -125,6 +125,58 @@ describe('Grid testing', function() {
 
   });
 
+
+  // groups
+  describe('Test groups Method', function() {
+  	var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+  	var game = new Grid(testStr);
+
+  	it('Should return ["R1", "C6", "B2"]', function() {
+  		expect(game.groups(15)).to.deep.equal(["R1", "C6", "B2"]);
+  	});
+
+  	it('Should return ["R0", ..., "R8", "C0", ..., "C8", "B0", ..., "B8"]', function() {
+  		expect(game.groups()).to.deep.equal(["R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "C0", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8"]);
+  	});
+  });
+
+
+  // cells
+  describe('Test cells Method', function() {
+  	var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+  	var game = new Grid(testStr);
+
+  	it('Should return [18, 19, 20, 21, 22, 23, 24, 25, 26]', function() {
+  		expect(game.cells("R2")).to.deep.equal([18, 19, 20, 21, 22, 23, 24, 25, 26]);
+  	});
+
+  	it('Should return [4, 13, 22, 31, 40, 49, 58, 67, 76]', function() {
+  		expect(game.cells("C4")).to.deep.equal([4, 13, 22, 31, 40, 49, 58, 67, 76]);
+  	});
+
+  	it('Should return [54, 55, 56, 63, 64, 65, 72, 73, 74]', function() {
+  		expect(game.cells("B6")).to.deep.equal([54, 55, 56, 63, 64, 65, 72, 73, 74]);
+  	});
+
+  	it('Should return [0, ..., 80]', function() {
+  		expect(game.cells()).to.deep.equal([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]);
+  	});
+  });
+
+
+  // setPossible
+  describe('Test setPossible Method', function() {
+  	var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+  	var game = new Grid(testStr);
+
+  	before(function() {
+  		game.setPossible(3, [3, 4, 9]);
+  	});
+
+  	it('Should update possibilities array to be [3, 4, 9]', function() {
+  		expect(game.digitsets[3]).to.deep.equal([3, 4, 9]);
+  	});
+  });
 });
 
 
