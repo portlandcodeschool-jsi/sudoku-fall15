@@ -62,14 +62,72 @@ function SudokuViewer(grid) {
 
 	this.showHint = function(cellToken) {
 		//Show the Possibilities of a particular DigitSet
-
 		//This "cellHint" variable will hold the Array of Possibilities for the selected DigitSet
 		var cellHint = this.grid.getPossible(cellToken);
 
 
+		//console.log(cellHint);
+		//console.log(cellHint.length);
+
+		if (cellHint.length < 9) {
+
+
+		var makeNumber = function( element , index , array ) {
+		  //console.log(element);
+		  return parseInt(element);
+		};
+
+		var cellHintInts = cellHint.map(makeNumber);
+
+		//console.log(arr2);
+
+		var dot = ".........";
+		cellHint = dot.split('');
+		//console.log(arr3);
+		var placeNums = function( element , index , array ) {
+		  cellHint[element-1] = element.toString();
+		};
+		cellHintInts.forEach(placeNums);
+		//console.log(arr3);
+
+		};
 
 
 
+
+		//Add spaces on both sides of each element in the array
+		var widenNumbers = function( element , index , array ) {
+		  return " " + element + " ";
+		};
+		var wideVals = cellHint.map(widenNumbers);
+		//console.log(wideVals);
+		//Organize the wide numbers into groups of 3
+		var rowDigits = [[],[],[]];
+		//console.log(rowDigits);
+		var makeRowsCallBack = function( element , index , array ) {
+		  rowDigits[Math.floor(index/3)].push(element);
+		};
+		wideVals.forEach(makeRowsCallBack);
+		//console.log(rowDigits);
+		//Concatinate Rows with Pipes
+		var barsCallBack = function( element , index , array ) {
+			var str = "|";
+		  str += element.join('');
+		  str += "|\n";
+			//console.log(str);
+		  return str;
+		};
+		var rowBars = rowDigits.map(barsCallBack);
+		//console.log(rowBars);
+		var str = "+---------+\n";
+		var awesomeCallback = function( element , index , array ) {
+		  //console.log(element);
+		  str += element;
+		};
+		rowBars.forEach(awesomeCallback);
+		str += "+---------+\n";
+		//console.log(str);
+		return str;
 	};
 
 	this.snapshot = function() {
