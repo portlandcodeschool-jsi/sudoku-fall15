@@ -183,27 +183,62 @@ describe('Grid testing', function() {
 
 //testView
 describe ('Test viewer Methods', function(){
-  var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
-  var game = new Grid(testStr);
-  var viewer = new Viewer(game);
-  var testBoard =
-"+---------+---------+---------+\n" +
-"| 1  5  8 | .  2  . | .  6  . |\n" +
-"| 2  .  . | .  8  . | .  9  . |\n" +
-"| .  3  . | .  7  . | 8  .  2 |\n" +
-"+---------+---------+---------+\n" +
-"| .  6  . | 7  4  . | .  .  . |\n" +
-"| .  .  4 | .  6  . | 7  .  . |\n" +
-"| .  .  . | .  1  9 | .  5  . |\n" +
-"+---------+---------+---------+\n" +
-"| 4  .  9 | .  3  . | .  2  . |\n" +
-"| .  2  . | .  5  . | .  .  8 |\n" +
-"| .  7  . | .  9  . | 4  1  3 |\n" +
-"+---------+---------+---------+\n";
+  describe ('Test viewer.showCertain Method', function(){
+    var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+    var game = new Grid(testStr);
+    var viewer = new Viewer(game);
+    var testBoard =
+    "+---------+---------+---------+\n" +
+    "| 1  5  8 | .  2  . | .  6  . |\n" +
+    "| 2  .  . | .  8  . | .  9  . |\n" +
+    "| .  3  . | .  7  . | 8  .  2 |\n" +
+    "+---------+---------+---------+\n" +
+    "| .  6  . | 7  4  . | .  .  . |\n" +
+    "| .  .  4 | .  6  . | 7  .  . |\n" +
+    "| .  .  . | .  1  9 | .  5  . |\n" +
+    "+---------+---------+---------+\n" +
+    "| 4  .  9 | .  3  . | .  2  . |\n" +
+    "| .  2  . | .  5  . | .  .  8 |\n" +
+    "| .  7  . | .  9  . | 4  1  3 |\n" +
+    "+---------+---------+---------+\n";
 
 
 
-it('Should return testBoard', function(){
-expect(viewer.showCertain()).to.equal(testBoard);
-});
+    it('Should return testBoard', function(){
+      expect(viewer.showCertain()).to.equal(testBoard);
+    });
+  });
+
+  describe ('Test viewer.showHint Method for a cell with 9 possibilities.', function(){
+    var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+    var game = new Grid(testStr);
+    var viewer = new Viewer(game);
+    var testCell =
+    "+---------+\n" +
+    "| 1  2  3 |\n" +
+    "| 4  5  6 |\n" +
+    "| 7  8  9 |\n" +
+    "+---------+\n" +
+
+    it('Should return testBoard', function(){
+      expect(viewer.showHint(viewer.showHint(20))).to.equal(testCell);
+    });
+  });
+
+  describe ('Test viewer.showHint Method for a cell with 9 possibilities.', function(){
+    var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
+    var game = new Grid(testStr);
+    var viewer = new Viewer(game);
+    var testCell =
+    "+---------+\n" +
+    "| .  .  . |\n" +
+    "| .  .  . |\n" +
+    "| 7  .  . |\n" +
+    "+---------+\n" +
+
+    it('Should return testBoard', function(){
+      expect(viewer.showHint(viewer.showHint(22))).to.equal(testCell);
+    });
+  });
+
 });

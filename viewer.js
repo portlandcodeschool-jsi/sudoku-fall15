@@ -62,6 +62,14 @@ function SudokuViewer(grid) {
 
 	this.showHint = function(cellToken) {
 		//Show the Possibilities of a particular DigitSet
+
+		//This "cellHint" variable will hold the Array of Possibilities for the selected DigitSet
+		var cellHint = this.grid.getPossible(cellToken);
+
+
+
+
+
 	};
 
 	this.snapshot = function() {
