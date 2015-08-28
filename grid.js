@@ -29,9 +29,6 @@ function Grid(initstr) {
 	}
 }
 
-/*
-  TODO return array of all cell tokens, not an array of all the DigitSets
-*/
 Grid.prototype.cells = function (groupToken) {
   var cellTokens = [];
   if (arguments.length === 0) {
@@ -63,6 +60,26 @@ Grid.prototype.cells = function (groupToken) {
   return cellTokens;
 };
 
+/*
+grid.groups() --> Array of all group tokens
+grid.groups(cellToken) --> Array of all group tokens associated with cellToken
+*/
+Grid.prototype.groups = function (cellToken) {
+  var groupTokens = [];
+  if (arguments.length === 0) {
+    for (var i = 0; i < 9; i++) {
+      groupTokens.push(["c", i])
+      groupTokens.push(["r", i])
+      groupTokens.push(["b", i])
+    }
+  } else {
+    groupTokens.push(["c", this.getColNumber(cellToken)]);
+    groupTokens.push(["r", this.getRowNumber(cellToken)]);
+    groupTokens.push(["b", this.getBlockNumber(cellToken)]);
+  }
+  return groupTokens;
+}
+
 Grid.prototype.getAllDigitSets = function () {
   return this.allCells.slice();
 };
@@ -71,23 +88,60 @@ Grid.prototype.getCell = function (id) {
   return this.allCells[id];
 };
 
+// return array of all row groupTokens OR the groupToken for the selected cellToken
 Grid.prototype.getRow = function (cellToken) {
-  return validateCellToken(cellToken) ? Math.floor(cellToken / 9) : NaN;
+  if (arguments.length === 0) {
+    var groupTokens = [];
+    for (var i = 0; i < 9; i++) {
+      groupTokens.push(["r", i])
+    }
+    return groupTokens;
+  } else {
+    return ["r", this.getRowNumber(cellToken)]
+  }
 };
 
 Grid.prototype.getCol = function (cellToken) {
-  return validateCellToken(cellToken) ? Math.floor(cellToken % 9) : NaN;
+  if (arguments.length === 0) {
+    var groupTokens = [];
+    for (var i = 0; i < 9; i++) {
+      groupTokens.push(["c", i])
+    }
+    return groupTokens;
+  } else {
+    return ["c", this.getColNumber(cellToken)]
+  }
 };
 
 Grid.prototype.getBlock = function (cellToken) {
+  if (arguments.length === 0) {
+    var groupTokens = [];
+    for (var i = 0; i < 9; i++) {
+      groupTokens.push(["b", i])
+    }
+    return groupTokens;
+  } else {
+    return ["b", this.getBlockNumber(cellToken)]
+  }
+};
+
+Grid.prototype.getRowNumber = function (cellToken) {
+  return validateCellToken(cellToken) ? Math.floor(cellToken / 9) : NaN;
+};
+
+Grid.prototype.getColNumber = function (cellToken) {
+  return validateCellToken(cellToken) ? Math.floor(cellToken % 9) : NaN;
+};
+
+Grid.prototype.getBlockNumber = function (cellToken) {
   return validateCellToken(cellToken) ?
-    (Math.floor(this.getRow(cellToken) / 3) * 3) + (Math.floor(this.getCol(cellToken) / 3)) :
+    (Math.floor(this.getRowNumber(cellToken) / 3) * 3) + (Math.floor(this.getColNumber(cellToken) / 3)) :
     NaN;
 };
 
 Grid.prototype.getDigitSetsForRow = function (cellToken) {
-  var row = this.getRow(cellToken);
-  var col = this.getCol(cellToken);
+  var row = this.getRowNumber(cellToken);
+  var col = this.getColNumber(cellToken);
   var cellIds = [];
   var digitSets = [];
 
@@ -102,8 +156,8 @@ Grid.prototype.getDigitSetsForRow = function (cellToken) {
 };
 
 Grid.prototype.getDigitSetsForCol = function (cellToken) {
-  var col = this.getCol(cellToken);
-  var row = this.getRow(cellToken)
+  var col = this.getColNumber(cellToken);
+  var row = this.getRowNumber(cellToken)
   var cellIds = [];
   var digitSets = [];
 
@@ -118,8 +172,8 @@ Grid.prototype.getDigitSetsForCol = function (cellToken) {
 };
 
 Grid.prototype.getDigitSetsForBlock = function (cellToken) {
-  var col = this.getCol(cellToken);
-  var row = this.getRow(cellToken);
+  var col = this.getColNumber(cellToken);
+  var row = this.getRowNumber(cellToken);
   // var idInThisBlock = (row - Math.floor(row / 3)) * 3 + (col - Math.floor(col / 3));
   var idInThisBlock = ((row - Math.floor(row / 3) * 3) * 3) + (col - Math.floor(col / 3) * 3);
   col = Math.floor(col / 3) * 3;
@@ -227,13 +281,14 @@ var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6....
 
 
 // console.log(myGrid);// for testing only
-// console.log(myGrid.getRow(0));
-// console.log(myGrid.getRow(8));
-// console.log(myGrid.getRow(9));
-// console.log(myGrid.getRow(18));
+// console.log(myGrid.getRowNumber(0));
+// console.log(myGrid.getRowNumber(8));
+// console.log(myGrid.getRowNumber(9));
+// console.log(myGrid.getRowNumber(18));
 // myGrid.getDigitSetsForBlock(23);
 // console.log(myGrid.getCells());
 myGrid.getDigitSetsForBlock(23);
 // console.log(myGrid.getAllDigitSets());
 module.exports = Grid;
 console.log(validateCellToken(10));
+console.log(myGrid.getRowNumber(40));

@@ -22,11 +22,11 @@ Grid instance methods:
 - grid.cells(groupToken) --> Array of cell tokens associated with groupToken
 - grid.groups() --> Array of all group tokens
 - grid.groups(cellToken) --> Array of all group tokens associated with cellToken
-- grid.getRow() --> array of groupTokens (all rows)=
-- grid.getCol() --> array of groupTokens (all cols)
+- grid.getRowNumber() --> array of groupTokens (all rows)=
+- grid.getColNumber() --> array of groupTokens (all cols)
 - grid.getBlock() --> array of groupTokens (all blocks)
-- grid.getRow(cellToken) --> groupToken (row)
-- grid.getCol(cellToken) --> groupToken (col)
+- grid.getRowNumber(cellToken) --> groupToken (row)
+- grid.getColNumber(cellToken) --> groupToken (col)
 - grid.getBlock(cellToken) --> groupToken (block)
 - grid.getPossible(cellToken) --> digitSet
 - grid.setPossible(cellToken, digitSet) --> ?
@@ -83,11 +83,11 @@ Grid instance methods:
 - grid.cells(groupToken) --> Array of cell tokens associated with groupToken
 - grid.groups() --> Array of all group tokens
 - grid.groups(cellToken) --> Array of all group tokens associated with cellToken
-- grid.getRow() --> array of groupTokens (all rows)=
-- grid.getCol() --> array of groupTokens (all cols)
+- grid.getRowNumber() --> array of groupTokens (all rows)=
+- grid.getColNumber() --> array of groupTokens (all cols)
 - grid.getBlock() --> array of groupTokens (all blocks)
-- grid.getRow(cellToken) --> groupToken (row)
-- grid.getCol(cellToken) --> groupToken (col)
+- grid.getRowNumber(cellToken) --> groupToken (row)
+- grid.getColNumber(cellToken) --> groupToken (col)
 - grid.getBlock(cellToken) --> groupToken (block)
 - grid.getPossible(cellToken) --> digitSet
 - grid.setPossible(cellToken, digitSet) --> ?
