@@ -218,10 +218,10 @@ describe ('Test viewer Methods', function(){
     "| 1  2  3 |\n" +
     "| 4  5  6 |\n" +
     "| 7  8  9 |\n" +
-    "+---------+\n" +
+    "+---------+\n";
 
     it('Should return testBoard', function(){
-      expect(viewer.showHint(viewer.showHint(20))).to.equal(testCell);
+      expect(viewer.showHint(20)).to.equal(testCell);
     });
   });
 
@@ -234,10 +234,10 @@ describe ('Test viewer Methods', function(){
     "| .  .  . |\n" +
     "| .  .  . |\n" +
     "| 7  .  . |\n" +
-    "+---------+\n" +
+    "+---------+\n";
 
     it('Should return testBoard', function(){
-      expect(viewer.showHint(viewer.showHint(22))).to.equal(testCell);
+      expect(viewer.showHint(22)).to.equal(testCell);
     });
   });
 
