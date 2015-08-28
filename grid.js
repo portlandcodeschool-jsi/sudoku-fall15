@@ -269,7 +269,17 @@ Grid.prototype.fromString = function (initstr) {
 	}, this);
 };
 
-
+Grid.prototype.groupNeeds = function (groupToken) {
+  var digitSet = new DigitSet();
+  var cellTokens = this.cells(groupToken);
+  cellTokens.forEach(function(e){
+  var thisDigitSet = this.allCells[e];
+    if (!(thisDigitSet.isUncertain())){
+      digitSet.eliminate(thisDigitSet);
+    };
+  },this);
+  return digitSet;
+};
 
 
 var myGrid = new Grid(".94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8");
