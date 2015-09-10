@@ -1,10 +1,25 @@
-var Grid = require('./grid.js');
-var Viewer = require('./viewer.js');
+var GridFactory = require('./grid_constructor');
+var Viewer = require('./viewer-display');
+var ObjectFactory = require('./digitSet_Constructor');
+var currentStr = require('./updater');
 
-var testStr = '158.2..6.2...8..9..3..7.8.2.6.74......4.6.7......19.5.4.9.3..2..2..5...8.7..9.413';
-// consider loading strings from file instead...
+var testStr = '7...2......9.3....4.8..1..7.......8....627..5....45..95.3..4.....2...6......7.9.8';
+var cellSet = [];
 
-var game = new Grid(testStr);
+//function that changes value of currentStr;
+var changeCellValue = function(newStr) {
+  currentStr = newStr;
+};
 
-var viewer = new Viewer(game);
-viewer.show();
+//Display the string:
+// Viewer(testStr);
+
+
+//testing potential values
+ObjectFactory();
+var values = new ObjectFactory(1);
+var old = values.getRow("1");
+console.log(values.potential());
+
+
+module.exports = testStr;
